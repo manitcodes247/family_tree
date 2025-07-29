@@ -66,17 +66,21 @@ C:/wamp64/www/family-tree/
 
 ---
 
-## 🧬 Database Schema
+### 📊 Database Schema
 
 **Table: `members`**
 
-| Field      | Type         | Description               |
-|------------|--------------|---------------------------|
-| `id`       | INT          | Primary Key, Auto Increment |
-| `name`     | VARCHAR(255) | Member Name               |
-| `parent_id`| INT (NULL)   | Parent Member ID (nullable) |
+| Field       | Type          | Description                             |
+|-------------|---------------|-----------------------------------------|
+| `id`        | INT           | Primary Key, Auto Increment             |
+| `name`      | VARCHAR(255)  | Member Name                             |
+| `parent_id` | INT (NULL)    | Parent Member ID (nullable, self-referencing) |
+| `created_date` | DATETIME   | Timestamp when the member was added (default: CURRENT_TIMESTAMP) |
 
----
+- `parent_id` is a self-referencing foreign key that supports hierarchical (tree) structure.
+- If `parent_id` is `NULL`, the member is a top-level parent.
+- On deletion of a parent, its children are also deleted automatically (`ON DELETE CASCADE`).
+
 
 ## 🎥 Submission Guidelines
 
@@ -93,9 +97,9 @@ C:/wamp64/www/family-tree/
 ## 🧑‍💻 Developer
 
 **Manit Singh**  
-📧 manitsingh@example.com  
+📧 manitcodes247@gmail.com  
 📱 +91-9876543210  
-🖥️ [Portfolio or GitHub Link - optional]
+🖥️ https://github.com/manitcodes247/family_tree/
 
 ---
 
